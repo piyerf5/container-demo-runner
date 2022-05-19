@@ -76,7 +76,7 @@ RUN curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packa
     apt-get update && \
     apt-get install -u kubectl
 
-RUN git clone https://github.com/kreynoldsf5/container-demo-runner.git
+RUN git clone -b techXC  https://github.com/kreynoldsf5/container-demo-runner.git
 
 RUN pip3 install -r /container-demo-runner/requirements.txt
 
