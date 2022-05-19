@@ -196,10 +196,10 @@
             <div id="collapseHTTPstat" class="collapse" aria-labelledby="headingFunctions"
                 data-parent="#accordionFunctions">
                 <div class="card-body">
-                    <div class='form-group row m-1' id='httpgetgroup'>
+                    <div class='form-group row m-1' id='httpstatgroup'>
                         <label class='text-secondary m-2'>target:</label>
                         <div class="col-sm-5">
-                            <input class='form-control m-2' type='text' id='geturl' placeholder='URL'>
+                            <input class='form-control m-2' type='text' id='getstat' placeholder='URL'>
                         </div>
                         <div>
                             <button id='getstatbutton' class="btn btn-outline-secondary m-2">GET</button>
@@ -651,7 +651,7 @@
             $('#getstatbutton').click(function () {
                 let cmd = {
                     type: 'HTTP GET statistics',
-                    target: $('#geturl').val(),
+                    target: $('#getstat').val(),
                     cmd: [
                         'curl',
                         '-H',
@@ -662,8 +662,8 @@
                         '-o',
                         '/dev/null',
                         '-w',
-                        ' http_status_code: %{http_code}\n content_type: %{content_type}%\n dns_resolution: %{time_namelookup}\n tcp_established: %{time_connect}\n ssl_handshake_done: %{time_appconnect}\n TTFB: %{time_starttransfer}\n speed_download: %{speed_download}\n speed_upload: %{speed_upload}\n total_time: %{time_total}\n size: %{size_download}\n\n',
-                        $('#geturl').val()
+                        ' http_status_code: %{http_code}\n content_type: %{content_type}%\n dns_resolution: %{time_namelookup}\n tcp_established: %{time_connect}\n ssl_handshake_done: %{time_appconnect}\n TTFB: %{time_starttransfer}\n speed_download: %{speed_download}\n total_time: %{time_total}\n size: %{size_download}\n\n',
+                        $('#getstat').val()
                     ]
                 }
                 issueCmd(cmd)
