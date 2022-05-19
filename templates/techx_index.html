@@ -459,12 +459,12 @@
         }
 
         function spin() {
-            $('#progress').css('width', '100%').addClass('progress-bar-stripped progress-bar-animated active');
+            $('#progress').css('width', '100%').addClass('progress-bar-striped progress-bar-animated active');
             $('#progress').html('<span class="spinner-border spinner-border-sm ml-auto"></span>');
         }
 
         function stopSpin() {
-            $('#progress').css('width', '0%').removeClass('progress-bar-stripped progress-bar-animated active').html('');
+            $('#progress').css('width', '0%').removeClass('progress-bar-striped progress-bar-animated active').html('');
         }
 
         function resetUI() {
