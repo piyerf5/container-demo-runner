@@ -77,8 +77,12 @@
                         DNS Lookup
                     </button>
                     <button class="btn btn-outline-secondary m-2 collapsed" type="button" data-toggle="collapse"
-                        data-target="#collapseHTTP" aria-expanded="true" aria-controls="collapseHTTP">
-                        HTTP GET (statistics)
+                        data-target="#collapseHTTPstat" aria-expanded="true" aria-controls="collapseHTTPstat">
+                        HTTP Statistics
+                    </button>
+                    <button class="btn btn-outline-secondary m-2 collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseHTTPget" aria-expanded="true" aria-controls="collapseHTTPget">
+                        HTTP GET
                     </button>
                     <button class="btn btn-outline-secondary m-2 collapsed" type="button" data-toggle="collapse"
                         data-target="#collapseSockperf" aria-expanded="true" aria-controls="collapseSockperf">
@@ -189,7 +193,22 @@
                 </div>
             </div>
 
-            <div id="collapseHTTP" class="collapse" aria-labelledby="headingFunctions"
+            <div id="collapseHTTPstat" class="collapse" aria-labelledby="headingFunctions"
+                data-parent="#accordionFunctions">
+                <div class="card-body">
+                    <div class='form-group row m-1' id='httpgetgroup'>
+                        <label class='text-secondary m-2'>target:</label>
+                        <div class="col-sm-5">
+                            <input class='form-control m-2' type='text' id='geturl' placeholder='URL'>
+                        </div>
+                        <div>
+                            <button id='getstatbutton' class="btn btn-outline-secondary m-2">GET</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="collapseHTTPget" class="collapse" aria-labelledby="headingFunctions"
                 data-parent="#accordionFunctions">
                 <div class="card-body">
                     <div class='form-group row m-1' id='httpgetgroup'>
@@ -629,7 +648,7 @@
                 issueCmd(cmd)
             });
 
-            $('#geturlbutton').click(function () {
+            $('#getstatbutton').click(function () {
                 let cmd = {
                     type: 'HTTP GET statistics',
                     target: $('#geturl').val(),
@@ -644,6 +663,23 @@
                         '/dev/null',
                         '-w',
                         ' http_status_code: %{http_code}\n content_type: %{content_type}%\n dns_resolution: %{time_namelookup}\n tcp_established: %{time_connect}\n ssl_handshake_done: %{time_appconnect}\n TTFB: %{time_starttransfer}\n speed_download: %{speed_download}\n speed_upload: %{speed_upload}\n total_time: %{time_total}\n size: %{size_download}\n\n',
+                        $('#geturl').val()
+                    ]
+                }
+                issueCmd(cmd)
+            });
+
+            $('#geturlbutton').click(function () {
+                let cmd = {
+                    type: 'HTTP GET',
+                    target: $('#geturl').val(),
+                    cmd: [
+                        'curl',
+                        '-H',
+                        'Connection: close',
+                        '-k',
+                        '-L',
+                        '-s',
                         $('#geturl').val()
                     ]
                 }
