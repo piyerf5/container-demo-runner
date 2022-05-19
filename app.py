@@ -307,7 +307,7 @@ def root_route_ui():
     banner_background_color = "#%s" % os.getenv('BANNER_COLOR', '000000')
     banner_text_color = '#%s' % os.getenv('BANNER_TEXT_COLOR', 'ffffff')
     return render_template(
-        'diag_index.html',
+        'techx_index.html',
         hostname='connecting...',
         banner_text=(banner_text),
         banner_background_color=banner_background_color,

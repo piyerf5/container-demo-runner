@@ -6,7 +6,7 @@ WORKDIR /
 RUN apt-get update && \
     apt-get install --no-install-recommends -y git
 
-RUN git clone https://github.com/jgruberf5/container-demo-runner.git
+RUN git clone https://github.com/kreynoldsf5/container-demo-runner.git
 RUN pip3 install python-socketio requests websocket-client
 
 ENV URL '--help'
