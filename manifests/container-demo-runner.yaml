@@ -80,11 +80,11 @@ spec:
           mountPath: /etc/container-demo-runner
         env:
         - name: BANNER
-          value: Welcome to [Your Site Name Here]
+          value: Welcome to F5 Diagnostics Container
         - name: BANNER_COLOR
-          value: 00ff00
+          value: 36454F
         - name: BANNER_TEXT_COLOR
-          value: ffffff
+          value: E6ECEE
 ---
 apiVersion: v1
 kind: Service
